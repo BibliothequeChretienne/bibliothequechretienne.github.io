@@ -1,0 +1,101 @@
+html, body{
+    margin:0;
+    padding: 0;
+    height: 100%;
+    place-items: center;
+ 
+}
+
+body{
+justify-content: center;
+align-items: center;
+
+}
+
+h1{
+    color: rgba(0, 0, 0, 0.863);
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+ :root{
+    --search-container-width:40%;
+ }
+.search-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: var(--search-container-width);
+    /* height: 40%;  */
+    left:calc(50% - var(--search-container-width) /2 )
+  }
+
+.search-input {
+    padding-right: 30px; /* Add space for the icon */
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+   border-radius: 5px;
+    font-size: 16px; /* Initial placeholder font size */
+    border: 1px solid #642929; /* Add a default border */
+    transition: box-shadow 0.9s ease; /* Add smooth transition for the shadow */
+    box-shadow: 0 0 40px #642929;
+    
+  }
+  .search-input:focus {
+    outline: none; /* Remove the default focus outline */
+    border-color: #642929; /* Change border color on focus */
+    box-shadow: 0 0 20px #08113098; /* Add a shadow on focus */
+  }
+
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 16px; /* Icon size */
+   
+  }
+
+
+/* Add vibrate animation */
+@keyframes vibrate {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Apply vibrate animation to input field when needed */
+.vibrate {
+    animation: vibrate 0.3s ease;
+}
+
+#search_results{
+    height: 100%;
+    width: 96%;
+    border: 2px solid #642929;
+    border-radius: 20px;
+    background-color:rgb(122, 138, 138) ;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top:30px;
+    text-align: center;
+    
+}
+
+
+
+
+  /* ------------------------------------------responsive design--------------------------- */
+
+@media screen and (max-width: 768px) {
+  /* Adjust placeholder font size for smaller screens */
+  .search-input::placeholder {
+    font-size: 14px;
+  }
+}

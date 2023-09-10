@@ -34,9 +34,9 @@ function analyseInput(){
 
 
             const numero = parseInt(searchText)
-            const textFilePath = `/song_texts/${numero}.txt`; // looking for the corresponding text file
-            const svgFilePath =`/song_notes/${numero}.svg`; // looking for the corresponding note svg file
-            const mp3FilePath = `/song_melodies/${numero}_`; // looking for the corresponding mp3 file. voice 1 by default
+            const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
+            const svgFilePath =`../song_notes/${numero}.svg`; // looking for the corresponding note svg file
+            const mp3FilePath = `../song_melodies/${numero}_`; // looking for the corresponding mp3 file. voice 1 by default
 
 ///////////////////////////////////////////// A REVOIR LES NOTES DE MUSIQUES //////////////////////////
             fetch(svgFilePath)

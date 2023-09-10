@@ -33,8 +33,8 @@
 //----------------------------------------------- note-button----------------------------------------------//
 
 
-const notesDiv = document.getElementById("notesDiv");;
-const textsDiv = document.getElementById("textsDiv")
+const notesDiv = document.getElementById("notesDiv");
+const textsDiv = document.getElementById("textsDiv");
 
 
 const notesButton = document.getElementById("notes");

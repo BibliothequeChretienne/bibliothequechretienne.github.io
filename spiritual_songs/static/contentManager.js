@@ -191,3 +191,33 @@ repeatButton.addEventListener('click', function(){
 });
 
 
+function toggleControlPanel(){
+  const controlPanel = document.querySelector('.control_panel');
+  const controlPanelWidth = controlPanel.offsetWidth;
+  const leftPosition = `calc(50% - ${controlPanelWidth / 2}px)`;
+  // alert(leftPosition )
+
+// alert("test")
+  if(window.innerWidth <=900){
+    if(controlPanel.style.display==='block'){
+      controlPanel.style.display='none';
+    }else{
+      controlPanel.style.display = 'block';
+      controlPanel.style.justifyContent = 'center'; // Center horizontally
+       // controlPanel.style.left = leftPosition;
+      controlPanel.style.position = 'fixed';
+      controlPanel.style.top = '85%';
+      // controlPanel.style.left = 'calc(50% - 280px';
+      // controlPanel.style.right = '10';
+      // controlPanel.style.width = '200';
+      // controlPanel.style.height = '10';
+      controlPanel.style.zIndex = '999';
+      // controlPanel.style.overflow='auto'
+     
+    }
+  }
+}
+document.addEventListener('click', () =>{
+  toggleControlPanel();
+});
+

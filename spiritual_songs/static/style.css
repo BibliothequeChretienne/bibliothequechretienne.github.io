@@ -212,15 +212,37 @@ display: none;
 
 @media  screen and (max-width: 900px) {
     .control_panel{
-        display: block;
+        position: absolute;
+        display: none;
+        height: 100px;
+        width: 100%;
+        left: 0;
+        text-align: center;
+        /* left :calc(50% - 280px); */
+        justify-content: center;
+        align-items: center;
+        /* display: block;
         position: fixed;
         bottom: -100%;
-        z-index: 999;
+        z-index: 0; */
 
-        
     }    
+
+    button{
+        border-style: double;
+        width: 45px;
+        height: 45px;
+        margin-left: 10px;
+        margin-top: 5px;
+        border-radius: 10px;
+        border-color: #742F2F;
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.918);
+        transition: transform 0.3s ease;
+    }
+
     .music_bar{
     /* position: relative; */
+    align-items: center;
     background-color: rgb(194, 177, 23);
     height: 40px;
     width: 400px;
@@ -228,28 +250,36 @@ display: none;
     margin-top: 10px;
     left: calc(50% - 200px);
     }
+    #audio-player{
+        /* background-color: rgb(25, 8, 175); */
+        width: 100%; 
+        max-width: 100%; 
+        /* border: 1px solid #ccc;  */
+    }
+
     .container{
+        top:100px;
         position: absolute;
         align-items: center;
+        /* text-align: center; */
         display: flex;
         flex-direction: column;
         height: 1500px;
-        
-        
+        border: 1px solid blue;
+        padding:10px;
+
     }
 
     .song_notes{
-        /* position:absolute; */
-        /* background-color: rgb(24, 107, 155);
-        border-style: solid;  
-        height: 80;
-        width: 90%;
-        margin-left: 5%;
-        margin-bottom: 30px; */
-        width: 90%;
-        left: 5px;
-        height: 50%;
-        
+            margin-top: 0px;
+            position: relative;
+            /* background-color: rgb(255, 255, 255); */
+            border: 1px solid rgb(0, 0, 0);  
+            /* height: auto;  */
+            width: 90%;
+            margin-top:0;
+            /* overflow: scroll; */
+      
     }
     .song_notes img {
         margin-top: -100px;
@@ -290,7 +320,6 @@ body{
         align-items: center;
         display: flex;
         flex-direction: column;
-      
         height: 1000px;
         
         

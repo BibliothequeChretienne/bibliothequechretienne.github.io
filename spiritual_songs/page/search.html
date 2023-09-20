@@ -23,14 +23,41 @@
     <h1>ПОИСК</h1>
 
     <div class="search-container">
-        <input type="search" placeholder="Номер песни или отрывок текста..." maxlength="50" class="search-input" id="inputField">
+        <input type="search" id="input-field" placeholder="Номер песни или отрывок текста..." maxlength="50" class="search-input" id="inputField">
         <i class="fa-solid fa-magnifying-glass search-icon" id="analyze-button"></i>
     </div>
         
+    <div class="number-keyboard" id="number-keyboard">
+        <div class="number-row">
+            <div class="number-button" onclick="appendToInput('1')">1</div>
+            <div class="number-button" onclick="appendToInput('2')">2</div>
+            <div class="number-button" onclick="appendToInput('3')">3</div>
+        </div>
+        <div class="number-row">
+            <div class="number-button" onclick="appendToInput('4')">4</div>
+            <div class="number-button" onclick="appendToInput('5')">5</div>
+            <div class="number-button" onclick="appendToInput('6')">6</div>
+        </div>
+        <div class="number-row">
+            <div class="number-button" onclick="appendToInput('7')">7</div>
+            <div class="number-button" onclick="appendToInput('8')">8</div>
+            <div class="number-button" onclick="appendToInput('9')">9</div>
+        </div>
+        <div class="number-row">
+            <div class="number-button" id="call_text_keyboard" >T</div>
+            <div class="number-button" onclick="appendToInput('0')">0</div>
+            <div class="number-button" id="clearButton"><i class="fa-solid fa-delete-left"></i></div>
+        </div>
+    </div>
+
         <div id="search_results">
             <h1>РЕЗУЛЬТАТЫ ПОИСКА БУДУТ ОТОБРАЖЕНЫ ЗДЕСЬ.</h1>
             
         </div>
         <script src="../static/search.js"></script>
+
+        <script>
+              
+        </script>
 </body>
 </html>

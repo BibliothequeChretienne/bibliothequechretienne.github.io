@@ -33,7 +33,10 @@ function analyseInput(){
                                 localStorage.setItem('textContent','' );
 
 
-            const numero = parseInt(searchText)
+            const numero = parseInt(searchText);
+            localStorage.setItem('numero', numero);
+            // numero = localStorage.getItem('numero');
+            // alert(typeof(localStorage.getItem('numero')));
             const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
             const svgFilePath =`../song_notes/${numero}.svg`; // looking for the corresponding note svg file
             const mp3FilePath = `../song_melodies/${numero}_`; // looking for the corresponding mp3 file. voice 1 by default
@@ -45,7 +48,7 @@ function analyseInput(){
                     // localStorage.setItem('svgContent', svgContent);
                     localStorage.setItem('svgFilePath', svgFilePath);
 
-                })
+                });
                 ///// FETCHING THE MP3 FILE///
 
             fetch(mp3FilePath)
@@ -54,6 +57,8 @@ function analyseInput(){
                     localStorage.setItem('savedMP3', mp3FilePath );//URL.createObjectURL(blob));
 
                 })
+
+                //fetchingt text file
             fetch(textFilePath)
                 .then(response => response.text())
                 .then(textContent =>{
@@ -94,4 +99,33 @@ function analyseInput(){
 //             console.error(error);
 //             svgContainer.textContent = 'SVG not found for the input number.';
 //         });
+// });
+
+
+// function that takes input from the virtual number_keyboard
+function appendToInput(number) {
+    var inputField = document.getElementById('input-field');
+    inputField.value += number;
+}
+
+// hidding number_keyboard when T is pressed for text input research-------------------------------------------
+
+// const call_text_keyboard = document.getElementById('call_text_keyboard');
+// const number_keyboard = document.querySelector('.number-keyboard');
+
+// call_text_keyboard.addEventListener('click',()=>{
+// number_keyboard.style.display='none';
+// });
+
+// erasing the input text --------------------------------------------------------------------------------------
+// var inputField = document.getElementById('input-field');
+
+// const clearButton = document.getElementById('clearButton');
+// clearButton.addEventListener('click', () => {
+//     const currentValue = inputField.value;
+//     if (currentValue.length > 0) {
+//         // Remove the last character from the input value
+//         const newValue = currentValue.slice(0, -1);
+//         inputElement.value = newValue;
+//     }
 // });

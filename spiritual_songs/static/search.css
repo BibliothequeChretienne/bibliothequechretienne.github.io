@@ -22,14 +22,16 @@ h1{
 
  :root{
     --search-container-width:40%;
+    --number-keyboard-width:50%;
  }
 .search-container {
-    position: relative;
+    position: absolute;
     display: inline-block;
     text-align: center;
     width: var(--search-container-width);
     /* height: 40%;  */
-    left:calc(50% - var(--search-container-width) /2 )
+    left:calc(50% - var(--search-container-width) /2 );
+    margin-bottom: 20px;
   }
 
 .search-input {
@@ -42,6 +44,7 @@ h1{
     border: 1px solid #642929; /* Add a default border */
     transition: box-shadow 0.9s ease; /* Add smooth transition for the shadow */
     box-shadow: 0 0 40px #642929;
+    /* display: none; */
     
   }
   .search-input:focus {
@@ -85,17 +88,88 @@ h1{
     margin-right: 2%;
     margin-top:30px;
     text-align: center;
+    display: none;
     
 }
 
+.number-keyboard {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+    height: 68%;
+    /* overflow: hidden; */
+    margin-top: 20%;
+    position: relative;
+    left:calc(50% - var(--number-keyboard-width) /2 );
+
+}
+
+.number-row {
+  display: flex;
+  justify-content: center;
+}
+
+.number-button {
+  display: inline-block;
+  margin: 5px;
+  padding: 10% 0;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #410b0b;
+  border: 2px solid #000000;
+  border-radius: 10%; /* Make the buttons square */
+  width: 25%;
+  text-align: center;
+  line-height: 1.5; /* Center text vertically */
+}
+
+.number-button:hover {
+  background-color: #ccc;
+}
+#number-display {
+  font-size: 24px;
+  margin: 20px;
+}
 
 
-
-  /* ------------------------------------------responsive design--------------------------- */
+  /* ------------------------------------------responsive design TABLETS--------------------------- */
 
 @media screen and (max-width: 768px) {
   /* Adjust placeholder font size for smaller screens */
   .search-input::placeholder {
     font-size: 14px;
   }
+}
+
+@media screen and (min-width: 768px) {
+  .number-keyboard{
+    display: none;
+  }
+}
+
+
+
+  /* ------------------------------------------responsive design SMARTPHONES--------------------------- */
+
+@media screen and (max-width: 480px) {
+  body{
+    
+  }
+  .number-keyboard {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 50%;
+    height: 50%;
+    /* overflow: hidden; */
+    margin-top: 20%;
+    position: relative;
+    left:calc(50% - var(--number-keyboard-width) /2 );
+
+}
+
+  
 }

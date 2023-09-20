@@ -106,6 +106,7 @@ function updateDivVisibility(){
 }
 
 
+//-----------------------------------------------buttons----------------------------------------------//
 // refresh the songs.html page
         const button1 = document.getElementById('voice1');
         const button2 = document.getElementById('voice2');
@@ -113,6 +114,7 @@ function updateDivVisibility(){
         const button4 = document.getElementById('voice4');
 
 
+        //-------------loading files---------------------------------------//
 document.addEventListener('DOMContentLoaded', function() {
   const textContent = localStorage.getItem('textContent');
   const svgFilePath = localStorage.getItem('svgFilePath');
@@ -160,6 +162,104 @@ if (textContent) {
 
   // }
 });
+
+ // ------------------------------------------ PREVIOUS and NEXT --------------------------------------------//
+
+ const previous = document.getElementById('previous');
+ const next = document.getElementById('next');
+
+ previous.addEventListener('click',()=>{
+  numero = localStorage.getItem('numero')
+  // alert(numero);
+  if( numero == 1){
+    alert("Песня № 1");
+    
+  }
+  else{
+    numero = numero -1;
+    alert(typeof(numero));
+    numero
+    localStorage.setItem('numero', numero);
+
+    const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
+    const svgFilePath =`../song_notes/${numero}.svg`; // looking for the corresponding note svg file
+    const mp3FilePath = `../song_melodies/${numero}_`; // looking for the corresponding mp3 file. voice 1 by default
+
+
+    // fetching the notes ///
+    fetch(svgFilePath)
+    .then(response => response.blob())
+    .then( svgContent=> {
+        // localStorage.setItem('svgContent', svgContent);
+        localStorage.setItem('svgFilePath', svgFilePath);
+    });
+
+    //fetching mp3 file
+    fetch(mp3FilePath)
+        .then(response => response.blob())
+        .then(blob => {
+              localStorage.setItem('savedMP3', mp3FilePath );//URL.createObjectURL(blob));
+
+                })
+
+                //fetching text file//
+    fetch(textFilePath)
+        .then(response => response.text())
+        .then(textContent =>{
+              localStorage.setItem('textContent', textContent);
+              window.location.href = 'index.html'
+                        // search_results.textContent = "Number" + numero +"\n" + textContent;               
+                })
+  }
+});
+
+
+next.addEventListener('click', ()=>{
+  numero = parseInt(localStorage.getItem('numero'));
+
+  // alert(numero);
+  if( numero == 100){
+    alert("Песня № 100");
+    
+  }
+  else{
+    numero = numero +1;
+    alert(typeof(numero));
+    localStorage.setItem('numero', numero);
+
+    const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
+    const svgFilePath =`../song_notes/${numero}.svg`; // looking for the corresponding note svg file
+    const mp3FilePath = `../song_melodies/${numero}_`; // looking for the corresponding mp3 file. voice 1 by default
+
+
+    // fetching the notes ///
+    fetch(svgFilePath)
+    .then(response => response.blob())
+    .then( svgContent=> {
+        // localStorage.setItem('svgContent', svgContent);
+        localStorage.setItem('svgFilePath', svgFilePath);
+    });
+
+    //fetching mp3 file
+    fetch(mp3FilePath)
+        .then(response => response.blob())
+        .then(blob => {
+              localStorage.setItem('savedMP3', mp3FilePath );//URL.createObjectURL(blob));
+
+                })
+
+                //fetching text file//
+    fetch(textFilePath)
+        .then(response => response.text())
+        .then(textContent =>{
+              localStorage.setItem('textContent', textContent);
+              window.location.href = 'index.html'
+                        // search_results.textContent = "Number" + numero +"\n" + textContent;               
+                })
+  }
+});
+
+
 
 // -------------------------------repeating button for the audio file ----------------------------------//
 

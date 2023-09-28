@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.content_container {
+    flex: 1;
+    background-color: #f0f0f0; /* Adjust background color as needed */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: flex 0.3s; /* Smooth transition when hiding the top div */
+}
+
+.control_panel {
+    background-color: #333; /* Adjust background color as needed */
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Media query for smaller screens (e.g., phones) */
+@media (max-width: 768px) {
+    /* .top {
+        flex: 0; /* Hide the top div */
+   /* } */
+}

@@ -170,6 +170,10 @@ h1{
     left:calc(50% - var(--number-keyboard-width) /2 );
 
 }
-
-  
+:root{
+  --search-container-width:70%;
+}
+  .search-container{
+    left:calc(50% - var(--search-container-width)/2);
+  }
 }

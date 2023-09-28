@@ -1,35 +1,3 @@
-
-// const notesButton = document.getElementById("notes");
-// const icon = notesButton.querySelector("i");
-// let noteIsSlashed = false;
-
-// notesButton.addEventListener("click", () => {
-//     if (noteIsSlashed) {
-//         icon.classList.remove("fa-music-slash"); // Remove the class to unslash
-//         icon.classList.add("fa-music"); // Add the class for non-slashed
-//     } else {
-//         icon.classList.remove("fa-music"); // Remove the class for non-slashed
-//         icon.classList.add("fa-music-slash"); // Add the class to slash
-//     }
-//     noteIsSlashed = !noteIsSlashed; // Toggle the state
-// });
-
-
-
-// const textsButton = document.getElementById("texts");
-// const textSpan = document.getElementById("textSpan");
-// let textIsSlashed = false;
-
-// textsButton.addEventListener("click", () => {
-//   if (textIsSlashed) {
-//     textSpan.textContent = "T";
-//   } else {
-//     textSpan.innerHTML = '<i class="fa-solid fa-text-slash"></i>';
-//   }
-//   textIsSlashed = !textIsSlashed;
-// });
-
-
 //----------------------------------------------- note-button----------------------------------------------//
 
 
@@ -120,8 +88,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const svgFilePath = localStorage.getItem('svgFilePath');
   const audioPlayer = document.getElementById('audio-player');
   const savedMP3URL = localStorage.getItem('savedMP3');
+  const songTitle = localStorage.getItem('songTitle');
 
-
+if(songTitle){
+  document.getElementById('song_title').innerHTML= songTitle;
+}
 if (textContent) {
       document.getElementById('textsDiv').innerHTML = `<pre>` + textContent + `</pre>`;
   }
@@ -178,14 +149,20 @@ if (textContent) {
   else{
     numero = numero -1;
     alert(typeof(numero));
-    numero
+    // numero
+    titles={
+      1:"1-воспойте хвалу",
+      2:" где есть Бог такой как ты",
+      3:"о ты всегда со мной",
+      4:"кто достойно поклонение",
+  };
     localStorage.setItem('numero', numero);
-
+    const songTitle = titles[numero];
     const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
     const svgFilePath =`../song_notes/${numero}.svg`; // looking for the corresponding note svg file
     const mp3FilePath = `../song_melodies/${numero}_`; // looking for the corresponding mp3 file. voice 1 by default
 
-
+    localStorage.setItem('songTitle', songTitle);
     // fetching the notes ///
     fetch(svgFilePath)
     .then(response => response.blob())
@@ -226,12 +203,18 @@ next.addEventListener('click', ()=>{
     numero = numero +1;
     alert(typeof(numero));
     localStorage.setItem('numero', numero);
-
+    titles={
+      1:"1-воспойте хвалу",
+      2:" где есть Бог такой как ты",
+      3:"о ты всегда со мной",
+      4:"кто достойно поклонение",
+  };
+    const songTitle = titles[numero];
     const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
     const svgFilePath =`../song_notes/${numero}.svg`; // looking for the corresponding note svg file
     const mp3FilePath = `../song_melodies/${numero}_`; // looking for the corresponding mp3 file. voice 1 by default
 
-
+    localStorage.setItem('songTitle', songTitle);
     // fetching the notes ///
     fetch(svgFilePath)
     .then(response => response.blob())
@@ -261,36 +244,6 @@ next.addEventListener('click', ()=>{
 
 
 
-// -------------------------------repeating button for the audio file ----------------------------------//
-
-const repeatButton = document.getElementById('repeatButton');
-let isRepeating = false;
-
-// function repeatAudio() {
-//   setTimeout(function() {
-//       audioPlayer.currentTime = 0; // Rewind to the beginning
-//       audioPlayer.play(); // Play again after 2 seconds
-//   }, 2000); // 2000 milliseconds = 2 seconds
-// }
-
-// audioPlayer.addEventListener('ended', function(){
-//   if (isRepeating){
-//     repeatAudio();
-//   }
-// });
-
-repeatButton.addEventListener('click', function(){
-  audioPlayer.loop="loop";
-  // if(isRepeating){
-  //   repeatButton.style.backgroundColor='green';
-  //   audioPlayer.loop=`loop`;
-  // }
-  // else{
-  //   repeatButton.style.backgroundColor='white';
-  // }
-});
-
-
 function toggleControlPanel(){
   const controlPanel = document.querySelector('.control_panel');
   const controlPanelWidth = controlPanel.offsetWidth;
@@ -306,7 +259,9 @@ function toggleControlPanel(){
       controlPanel.style.justifyContent = 'center'; // Center horizontally
        // controlPanel.style.left = leftPosition;
       controlPanel.style.position = 'fixed';
-      controlPanel.style.top = '85%';
+      // controlPanel.style.top = '80%';
+      controlPanel.style.bottom = '0%';
+
       // controlPanel.style.left = 'calc(50% - 280px';
       // controlPanel.style.right = '10';
       // controlPanel.style.width = '200';
@@ -321,3 +276,15 @@ document.addEventListener('click', () =>{
   toggleControlPanel();
 });
 
+
+
+//automatically repeat song
+
+var audio = document.getElementById('audio-player');
+
+// Add an event listener for the 'ended' event
+audio.addEventListener('ended', function() {
+    // Reset the audio to the beginning and play it again
+    audio.currentTime = 0;
+    audio.play();
+});

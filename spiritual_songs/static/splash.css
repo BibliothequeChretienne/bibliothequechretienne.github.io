@@ -1,0 +1,43 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; 
+    background: linear-gradient(45deg, #c0bfc7, #40635e67); /* Adjust the colors as needed */
+    /* -webkit-background-clip: text; */
+}
+
+.splash {
+    text-align: center;
+    font-size: 24px;
+    animation: zoomOut 1s; /* Define the zoom-out animation */
+    
+}
+
+@keyframes zoomOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+
+/* ----------------------------------- PHONES--------------------*/
+@media  screen and (max-width: 480px) {
+    body{
+        text-align: center;
+       
+    }
+    h1{
+        font-size: 15px;
+    }
+
+}

@@ -37,10 +37,18 @@ function analyseInput(){
             localStorage.setItem('numero', numero);
             // numero = localStorage.getItem('numero');
             // alert(typeof(localStorage.getItem('numero')));
+            titles={
+                1:"1-воспойте хвалу",
+                2:" где есть Бог такой как ты",
+                3:"о ты всегда со мной",
+                4:"кто достойно поклонение",
+            };
+            const songTitle = titles[numero];
             const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
             const svgFilePath =`../song_notes/${numero}.svg`; // looking for the corresponding note svg file
             const mp3FilePath = `../song_melodies/${numero}_`; // looking for the corresponding mp3 file. voice 1 by default
 
+            localStorage.setItem('songTitle', songTitle);
 ///////////////////////////////////////////// A REVOIR LES NOTES DE MUSIQUES //////////////////////////
             fetch(svgFilePath)
                 .then(response => response.blob())

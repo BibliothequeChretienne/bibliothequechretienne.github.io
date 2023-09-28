@@ -3,39 +3,17 @@ html, body{
         padding: 0;
         height: 100%;
         place-items: center;
-        
+        justify-content: center;
+        align-items: center;
 }
 
-body{
-    justify-content: center;
-    align-items: center;
-    /* display: flex;
-    flex-direction: column;
-    min-height: 100vh; */
-}
-.content {
-    flex: 1; /* Allow the content to expand and fill the available space */
-    padding: 20px;
-  }
 
-.top-bar{
-    width: 100%;
-    height: 40px;
-    background: #742F2F;
 
-}
-
-p{  
+/* p{  
     position: absolute;
     text-align: center;
     color: rgb(236, 234, 234);
-}
-#eye_vision{
-    top:0;
-    right:0;
-}
-
-
+} */
 
 .control_panel{
     position: absolute;
@@ -50,10 +28,11 @@ p{
     /* box-sizing: border-box; */
     justify-content: center;
     align-items: center;
-   
-
-
 }   
+
+.control_panel .music_bar{
+    display: none;
+}
 button{
     border-style: double;
     width: 45px;
@@ -118,7 +97,7 @@ button:hover{
 
 
 .music_bar{
-    position: relative;
+    /* position: ; */
     background-color: #742F2F;
     /* height: 40px; */
     width: 600px;
@@ -130,18 +109,13 @@ button:hover{
     padding-top : 5px;
     /* display: flex; */
 }
-
-
-#repeatButton{
-    /* background-color:green; */
-    display: none;
-
+#audio-container{
+    position: relative;
 }
+
 #audio-player{
-    /* background-color: rgb(25, 8, 175); */
-    width: 70%; 
-    max-width: 450px; 
-    /* border: 1px solid #ccc;  */
+    width: 100%;  
+
 }
 
 .container{
@@ -210,7 +184,7 @@ display: none;
 
 /* ----------------------RESPONSIVE DESIGN FOR TABLETS---------------------- */
 
-@media  screen and (max-width: 900px)  {
+@media  screen and (max-width: 767px)  {
     body{
         /* display: none; */
     }
@@ -221,17 +195,18 @@ display: none;
         width: 100%;
         left: 0;
         text-align: center;
-        /* left :calc(50% - 280px); */
         justify-content: center;
         align-items: center;
-        /* display: block;
-        position: fixed;
-        bottom: -100%;
-        z-index: 0; */
         bottom:0;
-        margin-bottom:50px;
+    }
 
-    }    
+    .control_panel .music_bar{
+        display: block;
+    }   
+    .music_bar{
+        display: none;
+    }
+
 
     button{
         border-style: double;
@@ -246,19 +221,21 @@ display: none;
     }
 
     .music_bar{
+        /* display: none; */
     /* position: relative; */
     align-items: center;
-    background-color: rgb(194, 177, 23);
+    /* background-color: rgb(194, 177, 23); */
     height: 40px;
     width: 400px;
     border-radius: 10px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     left: calc(50% - 200px);
     }
     #audio-player{
         /* background-color: rgb(25, 8, 175); */
         width: 100%; 
         max-width: 100%; 
+        height: 100%;
         /* border: 1px solid #ccc;  */
     }
 
@@ -318,12 +295,110 @@ display: none;
 
 /* --------------------------RESPONSIVE DESIGN FOR PHONES------------------ */
 
-@media  screen and (max-width: 500px) {
+@media only screen and (min-width: 300px) and (max-width: 480px) {
 
-body{
-    /* text-align: center; */
-    display: none;
+    body{
+        /* display:flex; */
+        align-items: center;
+        justify-content: center;
+      
+    }
+    .music_bar{
+        display: none;
+    }
+.song_number{
+    display: flex;
+    justify-content: center;/* Center the contents horizontally */
+    align-items: center; /* Center the contents vertically */
+    text-align: center;
 }
+#song_title {
+    flex-grow: 1; /* Allow the title to grow and take up available space */
+}
+#eye {
+    /* display: flex; */
+    right:10px
+}
+    .container{
+        align-items: flex-start;
+        display: table-column;
+        height: 1000px;
+        margin-top: 10px;
+        width: 90%;
+        align-items: center;
+        margin-left: 5px;
+        margin-right:5px;
+    }
+
+    .song_notes{
+        font-size: 16px; /* Set an initial font size */
+        max-width: 100%;
+        margin: 10px 10px 10px 10px;
+        border: 1px solid;
+        border-radius: 5px;
+       
+    }
+    .song_texts{
+        font-size: 16px; /* Set an initial font size */
+        word-wrap: break-word; /* Wrap long words onto the next line */
+        /* overflow-wrap: break-word; */
+        max-width: 100%;
+        margin: 10px 10px 10px 10px;
+        border: 1px green solid;
+    }
+    .control_panel {
+        position: absolute;
+        width: 100%; 
+        border-radius: 10px 10px 0px 0px;
+        margin-top: 20px;
+        background-color: #742F2F;
+        display: flex;
+        flex-wrap: wrap; /* Allow buttons to wrap to the next line when necessary */
+        justify-content: space-between; /* Add space between buttons */
+        align-items: center;
+        text-align: center;
+    } 
+    .control_panel .music_bar{
+        display: block;
+        width: 90%;
+        margin-left: 5px;
+        left:20px;
+        margin-top: 5px;
+        background-color: rgba(255, 255, 255, 0.007);
+    }
+    h1{
+       font-size: 20px;
+       text-align: center;
+       align-items: center;
+    }
+  
+    button{
+        border-style: double;
+        width: 40px;
+        height: 40px;
+        margin-left: 0px;
+        margin-top: 5px;
+        border-radius: 10px;
+        border-color: #742F2F;
+        flex-grow: 1;
+        box-shadow: 0 2px 4px rgba(54, 45, 45, 0.918);
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+    .music_bar {
+        width: 100%;
+    }
+    #loupe{
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+        margin-top: 5px;
+        margin-left:0px;
+        margin-right:0px;
+        border-radius: 10px;
+        border-color: #742F2F;
+        transition: transform 0.3s ease-out;
+    }
 
 }
 

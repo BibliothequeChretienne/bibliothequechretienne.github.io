@@ -184,7 +184,7 @@ if (textContent) {
         .then(response => response.text())
         .then(textContent =>{
               localStorage.setItem('textContent', textContent);
-              window.location.href = 'index.html'
+              window.location.href = 'song.html'
                         // search_results.textContent = "Number" + numero +"\n" + textContent;               
                 })
   }
@@ -236,7 +236,7 @@ next.addEventListener('click', ()=>{
         .then(response => response.text())
         .then(textContent =>{
               localStorage.setItem('textContent', textContent);
-              window.location.href = 'index.html'
+              window.location.href = 'song.html'
                         // search_results.textContent = "Number" + numero +"\n" + textContent;               
                 })
   }

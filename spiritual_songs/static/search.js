@@ -38,10 +38,10 @@ function analyseInput(){
             // numero = localStorage.getItem('numero');
             // alert(typeof(localStorage.getItem('numero')));
             titles={
-                1:"1-воспойте хвалу",
-                2:" где есть Бог такой как ты",
-                3:"о ты всегда со мной",
-                4:"кто достойно поклонение",
+                1:"1- Воспойте хвалу",
+                2:"2- Где есть Бог такой как ты",
+                3:"3- О, Ты всегда со мной.",
+                4:"4- Кто достойно поклонение",
             };
             const songTitle = titles[numero];
             const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file

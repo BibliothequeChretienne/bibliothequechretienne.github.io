@@ -1,4 +1,5 @@
 //----------------------------------------------- note-button----------------------------------------------//
+// import titles from './songTitles';
 
 
 const notesDiv = document.getElementById("notesDiv");
@@ -134,8 +135,10 @@ if (textContent) {
   // }
 });
 
- // ------------------------------------------ PREVIOUS and NEXT --------------------------------------------//
+// const titles = require('./titles');
 
+ // ------------------------------------------ PREVIOUS and NEXT --------------------------------------------//
+ titles={};
  const previous = document.getElementById('previous');
  const next = document.getElementById('next');
 
@@ -148,14 +151,13 @@ if (textContent) {
   }
   else{
     numero = numero -1;
-    alert(typeof(numero));
-    // numero
-    titles={
-      1:"1-воспойте хвалу",
-      2:" где есть Бог такой как ты",
-      3:"о ты всегда со мной",
-      4:"кто достойно поклонение",
-  };
+    // alert(typeof(numero));
+  //   titles={
+  //     1:"1- Воспойте хвалу",
+  //     2:"2- Где есть Бог такой как ты",
+  //     3:"3- О, Ты всегда со мной.",
+  //     4:"4- Кто достойно поклонение",
+  // };
     localStorage.setItem('numero', numero);
     const songTitle = titles[numero];
     const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
@@ -201,14 +203,14 @@ next.addEventListener('click', ()=>{
   }
   else{
     numero = numero +1;
-    alert(typeof(numero));
+    // alert(typeof(numero));
     localStorage.setItem('numero', numero);
-    titles={
-      1:"1-воспойте хвалу",
-      2:" где есть Бог такой как ты",
-      3:"о ты всегда со мной",
-      4:"кто достойно поклонение",
-  };
+  //   titles={
+  //     1:"1- Воспойте хвалу",
+  //     2:"2- Где есть Бог такой как ты",
+  //     3:"3- О, Ты всегда со мной.",
+  //     4:"4- Кто достойно поклонение",
+  // };
     const songTitle = titles[numero];
     const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
     const svgFilePath =`../song_notes/${numero}.svg`; // looking for the corresponding note svg file

@@ -8,13 +8,6 @@ html, body{
 }
 
 
-
-/* p{  
-    position: absolute;
-    text-align: center;
-    color: rgb(236, 234, 234);
-} */
-
 .control_panel{
     position: absolute;
     height: 60px;
@@ -295,12 +288,13 @@ display: none;
 
 /* --------------------------RESPONSIVE DESIGN FOR PHONES------------------ */
 
-@media only screen and (min-width: 300px) and (max-width: 480px) {
+@media only screen and (min-width: 400px) and (max-width: 600px) {
 
     body{
         /* display:flex; */
         align-items: center;
         justify-content: center;
+        width: 100%;
       
     }
     .music_bar{
@@ -352,7 +346,7 @@ display: none;
         border-radius: 10px 10px 0px 0px;
         margin-top: 20px;
         background-color: #742F2F;
-        display: flex;
+        /* display: flex; */
         flex-wrap: wrap; /* Allow buttons to wrap to the next line when necessary */
         justify-content: space-between; /* Add space between buttons */
         align-items: center;
@@ -402,5 +396,48 @@ display: none;
 
 }
 
+/* PHONES _@2_ */
+
+@media only screen and (max-width: 400px) and (min-width:200px){
+body{
+    display: block;
+    color: blue;
+    align-items: center;
+    /* text-align: center; */
+    justify-content: center;
+}
+
+button,#loupe{
+    border-style: double;
+    width: 35px;
+    height: 35px;
+    margin-left: 0px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border-color: #742F2F;
+    flex-grow: 1;
+    box-shadow: 0 2px 4px rgba(54, 45, 45, 0.918);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+#loupe{
+    margin-right: 0px;
+}
+.control_panel .music_bar{
+    display: block;
+    width: 90%;
+    margin-left: 0px;
+    left:20px;
+    margin-top: 5px;
+    background-color: rgba(255, 255, 255, 0.007);
+}
 
 
+/* ____NONE___@ */
+}
+@media only screen and (max-width: 200px){
+    body{
+        display: none;
+    }
+}

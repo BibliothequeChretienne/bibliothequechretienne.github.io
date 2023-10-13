@@ -115,7 +115,7 @@ button:hover{
     position: relative;
     /* border-color: black; */
     /* border-style: solid; */
-    background-color:rgb(255, 255, 255);
+    /* background-color:rgb(255, 255, 255); */
     height: 1500px;
     width: 96%;
     margin-top: 20px;
@@ -240,7 +240,7 @@ display: none;
         display: flex;
         flex-direction: column;
         height: 2000px;
-        border: 1px solid blue;
+        /* border: 1px solid blue; */
         /* padding:10px; */
         /* text-align: center; */
         
@@ -333,12 +333,13 @@ display: none;
        
     }
     .song_texts{
-        font-size: 16px; /* Set an initial font size */
+        font-size: 20px; /* Set an initial font size */
         word-wrap: break-word; /* Wrap long words onto the next line */
         /* overflow-wrap: break-word; */
         max-width: 100%;
         margin: 10px 10px 10px 10px;
-        border: 1px green solid;
+        /* border: 1px green solid; */
+        margin-left: 5%;
     }
     .control_panel {
         position: absolute;

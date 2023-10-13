@@ -1,5 +1,5 @@
 //----------------------------------------------- note-button----------------------------------------------//
-// import titles from './songTitles';
+titles={};
 
 
 const notesDiv = document.getElementById("notesDiv");
@@ -89,11 +89,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const svgFilePath = localStorage.getItem('svgFilePath');
   const audioPlayer = document.getElementById('audio-player');
   const savedMP3URL = localStorage.getItem('savedMP3');
-  const songTitle = localStorage.getItem('songTitle');
+  // const songTitle = localStorage.getItem('songTitle');
+  const num = localStorage.getItem('numero');
+  const songTitle = titles[num];
 
 if(songTitle){
   document.getElementById('song_title').innerHTML= songTitle;
 }
+
 if (textContent) {
       document.getElementById('textsDiv').innerHTML = `<pre>` + textContent + `</pre>`;
   }
@@ -103,7 +106,6 @@ if (textContent) {
 }
 
   if (savedMP3URL) {
-    // Set the src attribute of the audio element to the saved MP3 file URL.
     audioPlayer.src = savedMP3URL + `1.mp3`;
 
     button1.addEventListener('click' ,function(){
@@ -123,22 +125,10 @@ if (textContent) {
     alert('No saved MP3 found.');
   }
 
-  // if(mp3FilePath){
-  //   const audioPlayer = document.getElementById('audio-player');
-  //   const playButton = document.getElementById('play-button');
-  //   playButton.addEventListener('click', function () {
-  //     audioPlayer.src=mp3FilePath;
-  //     audioPlayer.play();
-
-  //   });
-
-  // }
 });
 
-// const titles = require('./titles');
-
  // ------------------------------------------ PREVIOUS and NEXT --------------------------------------------//
- titles={};
+ 
  const previous = document.getElementById('previous');
  const next = document.getElementById('next');
 
@@ -151,13 +141,6 @@ if (textContent) {
   }
   else{
     numero = numero -1;
-    // alert(typeof(numero));
-  //   titles={
-  //     1:"1- Воспойте хвалу",
-  //     2:"2- Где есть Бог такой как ты",
-  //     3:"3- О, Ты всегда со мной.",
-  //     4:"4- Кто достойно поклонение",
-  // };
     localStorage.setItem('numero', numero);
     const songTitle = titles[numero];
     const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
@@ -165,7 +148,6 @@ if (textContent) {
     const mp3FilePath = `../song_melodies/${numero}_`; // looking for the corresponding mp3 file. voice 1 by default
 
     localStorage.setItem('songTitle', songTitle);
-    // fetching the notes ///
     fetch(svgFilePath)
     .then(response => response.blob())
     .then( svgContent=> {
@@ -203,14 +185,8 @@ next.addEventListener('click', ()=>{
   }
   else{
     numero = numero +1;
-    // alert(typeof(numero));
     localStorage.setItem('numero', numero);
-  //   titles={
-  //     1:"1- Воспойте хвалу",
-  //     2:"2- Где есть Бог такой как ты",
-  //     3:"3- О, Ты всегда со мной.",
-  //     4:"4- Кто достойно поклонение",
-  // };
+
     const songTitle = titles[numero];
     const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
     const svgFilePath =`../song_notes/${numero}.svg`; // looking for the corresponding note svg file
@@ -259,17 +235,10 @@ function toggleControlPanel(){
     }else{
       controlPanel.style.display = 'block';
       controlPanel.style.justifyContent = 'center'; // Center horizontally
-       // controlPanel.style.left = leftPosition;
       controlPanel.style.position = 'fixed';
-      // controlPanel.style.top = '80%';
       controlPanel.style.bottom = '0%';
-
-      // controlPanel.style.left = 'calc(50% - 280px';
-      // controlPanel.style.right = '10';
-      // controlPanel.style.width = '200';
-      // controlPanel.style.height = '10';
       controlPanel.style.zIndex = '999';
-      // controlPanel.style.overflow='auto'
+
      
     }
   }
@@ -281,7 +250,6 @@ document.addEventListener('click', () =>{
 
 
 //automatically repeat song
-
 var audio = document.getElementById('audio-player');
 
 // Add an event listener for the 'ended' event
@@ -289,4 +257,34 @@ audio.addEventListener('ended', function() {
     // Reset the audio to the beginning and play it again
     audio.currentTime = 0;
     audio.play();
+});
+
+const visionControl = document.getElementById("eye");
+const body = document.body;
+const container = document.getElementsByClassName('container');
+const song_title = document.getElementById('song_title');
+
+visionControl.addEventListener('click',()=>{
+
+  if(textsDiv.style.backgroundColor=='white'){
+    // visionControl.querySelector('i').className='fa-regular fa-eye';
+    visionControl.style.backgroundColor='white';
+    visionControl.style.borderRadius='10px';
+    notesDiv.style.backgroundColor='white';
+    // visionControl.style.width='40px';
+    // visionControl.style.height='40px';
+    // visionControl.style.placeItems='center';
+    visionControl.style.paddingTop='10px';
+    body.style.background='black';
+    textsDiv.style.backgroundColor='black';
+    song_title.style.color='white';
+    // container.style.backgroundColor='black'
+    textsDiv.style.color='white';
+    }
+  else{
+    body.style.background='white';
+    textsDiv.style.backgroundColor='white';
+    song_title.style.color='black';
+    textsDiv.style.color='black';
+  }
 });

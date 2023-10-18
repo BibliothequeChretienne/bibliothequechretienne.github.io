@@ -177,7 +177,7 @@ if (textContent) {
   }
   else{
     numero = numero -1;
-    alert(typeof(numero));
+    // alert(typeof(numero));
     numero
     localStorage.setItem('numero', numero);
 
@@ -224,7 +224,7 @@ next.addEventListener('click', ()=>{
   }
   else{
     numero = numero +1;
-    alert(typeof(numero));
+    // alert(typeof(numero));
     localStorage.setItem('numero', numero);
 
     const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file

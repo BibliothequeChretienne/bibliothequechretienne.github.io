@@ -33,7 +33,9 @@ h1{
     left:calc(50% - var(--search-container-width) /2 );
     margin-bottom: 20px;
   }
-
+.search-container placeholder{
+  font-size: 100px;
+}
 .search-input {
     padding-right: 30px; /* Add space for the icon */
     width: 100%;
@@ -94,7 +96,6 @@ h1{
 
 .number-keyboard {
     display: inline-block;
-    border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
     width: 50%;
@@ -115,9 +116,9 @@ h1{
   display: inline-block;
   margin: 5px;
   padding: 10% 0;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
-  background-color: #410b0b;
+  background-color: #ffffff;
   border: 2px solid #000000;
   border-radius: 10%; /* Make the buttons square */
   width: 25%;
@@ -126,7 +127,8 @@ h1{
 }
 
 .number-button:hover {
-  background-color: #ccc;
+  background-color: black;
+  color: white;
 }
 #number-display {
   font-size: 24px;

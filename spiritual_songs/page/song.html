@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/9e32feefc3.css" crossorigin="anonymous">    
+    <script src="https://kit.fontawesome.com/9e32feefc3.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="https://avatars.mds.yandex.net/i?id=830e171667094b7855f2acecfb049ffe1197cc25-10121887-images-thumbs&n=13" type="image/x-icon">
+    <title>Духовные песни</title>
+</head>
+
+<body>
+    <div class="control_panel">
+        <button id="notes"><i class="fa-solid fa-music"></i></button>
+        <button id="texts"><span id="textSpan">T</span></button>
+        <button id="previous"><i class="fa-solid fa-backward-fast"></i></i></button>
+        <button id="next"><i class="fa-solid fa-forward-fast"></i></button>
+        <button id="loupe" onclick="window.location.href = 'search.html'"><i class="fa-solid fa-magnifying-glass"></i> </button>
+        <button id="voice1"><i class="fa-solid fa-1"></i></button>
+        <button id="voice2"><i class="fa-solid fa-2"></i></button>
+        <button id="voice3"><i class="fa-solid fa-3"></i></button>
+        <button id="voice4"><i class="fa-solid fa-4"></i></button>
+        <div class="music_bar" id="audio-container">
+        <audio controls id="audio-player" >
+            <source type="audio/mpeg" alt="song_melody">
+        </audio>   
+        </div>
+    </div>
+    <div class="music_bar" id="audio-container">
+            <audio controls id="audio-player">
+                <source type="audio/mpeg" alt="song_melody">
+            </audio>
+    </div>
+<div class="song_number">
+    <h1 id="song_title"></h1>
+    <div id="eye" style="align-items: center; width: 40px; height:30px; padding-top: 10px;border-radius: 10px; border:1px solid ;"><i class="fa-solid fa-eye"></i></div>
+</div>
+    <div class="container" >
+        <div class="song_texts" id="textsDiv"></div>
+        <div class="song_notes" id="notesDiv"></div>
+        
+    </div>  
+<!-- </div> -->
+
+<!-----------------------------------------SCRIPTS---------------------->
+    <script src="../static/contentManager.js"></script>
+    <script type="module" src="../static/songTitles.js"></script>
+    <script>
+    </script>
+</body>
+</html>

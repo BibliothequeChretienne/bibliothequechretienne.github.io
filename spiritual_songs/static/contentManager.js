@@ -1,36 +1,5 @@
-
-// const notesButton = document.getElementById("notes");
-// const icon = notesButton.querySelector("i");
-// let noteIsSlashed = false;
-
-// notesButton.addEventListener("click", () => {
-//     if (noteIsSlashed) {
-//         icon.classList.remove("fa-music-slash"); // Remove the class to unslash
-//         icon.classList.add("fa-music"); // Add the class for non-slashed
-//     } else {
-//         icon.classList.remove("fa-music"); // Remove the class for non-slashed
-//         icon.classList.add("fa-music-slash"); // Add the class to slash
-//     }
-//     noteIsSlashed = !noteIsSlashed; // Toggle the state
-// });
-
-
-
-// const textsButton = document.getElementById("texts");
-// const textSpan = document.getElementById("textSpan");
-// let textIsSlashed = false;
-
-// textsButton.addEventListener("click", () => {
-//   if (textIsSlashed) {
-//     textSpan.textContent = "T";
-//   } else {
-//     textSpan.innerHTML = '<i class="fa-solid fa-text-slash"></i>';
-//   }
-//   textIsSlashed = !textIsSlashed;
-// });
-
-
 //----------------------------------------------- note-button----------------------------------------------//
+titles={};
 
 
 const notesDiv = document.getElementById("notesDiv");
@@ -81,13 +50,6 @@ textsButton.addEventListener("click", () => {
 
 // update Div visibility 
 function updateDivVisibility(){
-  // if (noteIsSlashed && textIsSlashed){
-  //    // If both buttons are slashed, show notes only,( hide both divs )
-  //   notesDiv.style.display ="block";
-  //   textsDiv.style.display="none"
-    
-  // }
-  // else 
   if(noteIsSlashed){ // If notes button is slashed, hide notesDiv, show textsDiv
     notesDiv.style.display ="none";
     textsDiv.style.display = "block";
@@ -120,7 +82,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const svgFilePath = localStorage.getItem('svgFilePath');
   const audioPlayer = document.getElementById('audio-player');
   const savedMP3URL = localStorage.getItem('savedMP3');
+  // const songTitle = localStorage.getItem('songTitle');
+  const num = localStorage.getItem('numero');
+  const songTitle = titles[num];
 
+if(songTitle){
+  document.getElementById('song_title').innerHTML= songTitle;
+}
 
 if (textContent) {
       document.getElementById('textsDiv').innerHTML = `<pre>` + textContent + `</pre>`;
@@ -131,7 +99,6 @@ if (textContent) {
 }
 
   if (savedMP3URL) {
-    // Set the src attribute of the audio element to the saved MP3 file URL.
     audioPlayer.src = savedMP3URL + `1.mp3`;
 
     button1.addEventListener('click' ,function(){
@@ -151,20 +118,10 @@ if (textContent) {
     alert('No saved MP3 found.');
   }
 
-  // if(mp3FilePath){
-  //   const audioPlayer = document.getElementById('audio-player');
-  //   const playButton = document.getElementById('play-button');
-  //   playButton.addEventListener('click', function () {
-  //     audioPlayer.src=mp3FilePath;
-  //     audioPlayer.play();
-
-  //   });
-
-  // }
 });
 
  // ------------------------------------------ PREVIOUS and NEXT --------------------------------------------//
-
+ 
  const previous = document.getElementById('previous');
  const next = document.getElementById('next');
 
@@ -177,16 +134,13 @@ if (textContent) {
   }
   else{
     numero = numero -1;
-    // alert(typeof(numero));
-    numero
     localStorage.setItem('numero', numero);
-
+    const songTitle = titles[numero];
     const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
     const svgFilePath =`../song_notes/${numero}.svg`; // looking for the corresponding note svg file
     const mp3FilePath = `../song_melodies/${numero}_`; // looking for the corresponding mp3 file. voice 1 by default
 
-
-    // fetching the notes ///
+    localStorage.setItem('songTitle', songTitle);
     fetch(svgFilePath)
     .then(response => response.blob())
     .then( svgContent=> {
@@ -207,7 +161,7 @@ if (textContent) {
         .then(response => response.text())
         .then(textContent =>{
               localStorage.setItem('textContent', textContent);
-              window.location.href = 'index.html'
+              window.location.href = 'song.html'
                         // search_results.textContent = "Number" + numero +"\n" + textContent;               
                 })
   }
@@ -224,14 +178,14 @@ next.addEventListener('click', ()=>{
   }
   else{
     numero = numero +1;
-    // alert(typeof(numero));
     localStorage.setItem('numero', numero);
 
+    const songTitle = titles[numero];
     const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
     const svgFilePath =`../song_notes/${numero}.svg`; // looking for the corresponding note svg file
     const mp3FilePath = `../song_melodies/${numero}_`; // looking for the corresponding mp3 file. voice 1 by default
 
-
+    localStorage.setItem('songTitle', songTitle);
     // fetching the notes ///
     fetch(svgFilePath)
     .then(response => response.blob())
@@ -253,42 +207,12 @@ next.addEventListener('click', ()=>{
         .then(response => response.text())
         .then(textContent =>{
               localStorage.setItem('textContent', textContent);
-              window.location.href = 'index.html'
+              window.location.href = 'song.html'
                         // search_results.textContent = "Number" + numero +"\n" + textContent;               
                 })
   }
 });
 
-
-
-// -------------------------------repeating button for the audio file ----------------------------------//
-
-const repeatButton = document.getElementById('repeatButton');
-let isRepeating = false;
-
-// function repeatAudio() {
-//   setTimeout(function() {
-//       audioPlayer.currentTime = 0; // Rewind to the beginning
-//       audioPlayer.play(); // Play again after 2 seconds
-//   }, 2000); // 2000 milliseconds = 2 seconds
-// }
-
-// audioPlayer.addEventListener('ended', function(){
-//   if (isRepeating){
-//     repeatAudio();
-//   }
-// });
-
-repeatButton.addEventListener('click', function(){
-  audioPlayer.loop="loop";
-  // if(isRepeating){
-  //   repeatButton.style.backgroundColor='green';
-  //   audioPlayer.loop=`loop`;
-  // }
-  // else{
-  //   repeatButton.style.backgroundColor='white';
-  // }
-});
 
 
 function toggleControlPanel(){
@@ -304,15 +228,10 @@ function toggleControlPanel(){
     }else{
       controlPanel.style.display = 'block';
       controlPanel.style.justifyContent = 'center'; // Center horizontally
-       // controlPanel.style.left = leftPosition;
       controlPanel.style.position = 'fixed';
-      controlPanel.style.top = '85%';
-      // controlPanel.style.left = 'calc(50% - 280px';
-      // controlPanel.style.right = '10';
-      // controlPanel.style.width = '200';
-      // controlPanel.style.height = '10';
+      controlPanel.style.bottom = '0%';
       controlPanel.style.zIndex = '999';
-      // controlPanel.style.overflow='auto'
+
      
     }
   }
@@ -321,3 +240,41 @@ document.addEventListener('click', () =>{
   toggleControlPanel();
 });
 
+
+
+//automatically repeat song
+var audio = document.getElementById('audio-player');
+
+// Add an event listener for the 'ended' event
+audio.addEventListener('ended', function() {
+    // Reset the audio to the beginning and play it again
+    audio.currentTime = 0;
+    audio.play();
+});
+
+const visionControl = document.getElementById("eye");
+const body = document.body;
+const container = document.getElementsByClassName('container');
+const song_title = document.getElementById('song_title');
+
+visionControl.addEventListener('click',()=>{
+
+  if(textsDiv.style.backgroundColor=='white'){
+    // visionControl.querySelector('i').className='fa-regular fa-eye';
+    visionControl.style.backgroundColor='white';
+    visionControl.style.borderRadius='10px';
+    notesDiv.style.backgroundColor='white';
+    visionControl.style.paddingTop='10px';
+    body.style.background='black';
+    textsDiv.style.backgroundColor='black';
+    song_title.style.color='white';
+    // container.style.backgroundColor='black'
+    textsDiv.style.color='white';
+    }
+  else{
+    body.style.background='white';
+    textsDiv.style.backgroundColor='white';
+    song_title.style.color='black';
+    textsDiv.style.color='black';
+  }
+});

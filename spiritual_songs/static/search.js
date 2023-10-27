@@ -16,6 +16,7 @@ inputField.addEventListener('keydown', function(event){
 
 
 // ------------------FONCTION D"ANALYSE DES ENTREES-----------------------//
+// titles={};
 function analyseInput(){
     const searchText = searchInput.value.trim();
 
@@ -35,8 +36,6 @@ function analyseInput(){
 
             const numero = parseInt(searchText);
             localStorage.setItem('numero', numero);
-            // numero = localStorage.getItem('numero');
-            // alert(typeof(localStorage.getItem('numero')));
             const textFilePath = `../song_texts/${numero}.txt`; // looking for the corresponding text file
             const svgFilePath =`../song_notes/${numero}.svg`; // looking for the corresponding note svg file
             const mp3FilePath = `../song_melodies/${numero}_`; // looking for the corresponding mp3 file. voice 1 by default
@@ -63,7 +62,7 @@ function analyseInput(){
                 .then(response => response.text())
                 .then(textContent =>{
                             localStorage.setItem('textContent', textContent);
-                        window.location.href = 'index.html'
+                        window.location.href = 'song.html'
                         // search_results.textContent = "Number" + numero +"\n" + textContent;               
                 })
                 .catch(error => {
@@ -77,55 +76,8 @@ function analyseInput(){
     }
 }
 
-
-
-//-----------------------------------affichage des notes------------------------------//
-
-// document.getElementById('searchButton').addEventListener('click', function() {
-//     const inputNumber = document.getElementById('inputNumber').value;
-//     const svgContainer = document.getElementById('svgContainer');
-//     svgContainer.innerHTML = ''; // Clear previous content
-
-//     const svgFilePath = `path/to/files/${inputNumber}.svg`; // Adjust the path to your files
-
-//     fetch(svgFilePath)
-//         .then(response => response.text())
-//         .then(svgContent => {
-//             const svgElement = document.createElement('div');
-//             svgElement.innerHTML = svgContent;
-//             svgContainer.appendChild(svgElement);
-//         })
-//         .catch(error => {
-//             console.error(error);
-//             svgContainer.textContent = 'SVG not found for the input number.';
-//         });
-// });
-
-
 // function that takes input from the virtual number_keyboard
 function appendToInput(number) {
     var inputField = document.getElementById('input-field');
     inputField.value += number;
 }
-
-// hidding number_keyboard when T is pressed for text input research-------------------------------------------
-
-// const call_text_keyboard = document.getElementById('call_text_keyboard');
-// const number_keyboard = document.querySelector('.number-keyboard');
-
-// call_text_keyboard.addEventListener('click',()=>{
-// number_keyboard.style.display='none';
-// });
-
-// erasing the input text --------------------------------------------------------------------------------------
-// var inputField = document.getElementById('input-field');
-
-// const clearButton = document.getElementById('clearButton');
-// clearButton.addEventListener('click', () => {
-//     const currentValue = inputField.value;
-//     if (currentValue.length > 0) {
-//         // Remove the last character from the input value
-//         const newValue = currentValue.slice(0, -1);
-//         inputElement.value = newValue;
-//     }
-// });

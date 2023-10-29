@@ -50,13 +50,6 @@ textsButton.addEventListener("click", () => {
 
 // update Div visibility 
 function updateDivVisibility(){
-  // if (noteIsSlashed && textIsSlashed){
-  //    // If both buttons are slashed, show notes only,( hide both divs )
-  //   notesDiv.style.display ="block";
-  //   textsDiv.style.display="none"
-    
-  // }
-  // else 
   if(noteIsSlashed){ // If notes button is slashed, hide notesDiv, show textsDiv
     notesDiv.style.display ="none";
     textsDiv.style.display = "block";
@@ -271,9 +264,6 @@ visionControl.addEventListener('click',()=>{
     visionControl.style.backgroundColor='white';
     visionControl.style.borderRadius='10px';
     notesDiv.style.backgroundColor='white';
-    // visionControl.style.width='40px';
-    // visionControl.style.height='40px';
-    // visionControl.style.placeItems='center';
     visionControl.style.paddingTop='10px';
     body.style.background='black';
     textsDiv.style.backgroundColor='black';

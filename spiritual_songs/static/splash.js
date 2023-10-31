@@ -1,5 +1,3 @@
-
-// Define an object with the messages
 const messages = {
     "1": "Стану молиться духом, стану молиться и умом; буду петь духом, буду петь и умом. (1Кор. 14:15)",
     "2": "Воспойте Господу новую песнь! (Псалом 97:1)",
@@ -15,7 +13,6 @@ const messages = {
 ;
 const messageCount = Object.keys(messages).length;
 
-// Calculate a random time between 5 and 8 seconds in milliseconds
 const minDuration = 5000; // 5 seconds
 const maxDuration = 8000; // 8 seconds
 const randomDuration = Math.floor(Math.random() * (maxDuration - minDuration + 1)) + minDuration;

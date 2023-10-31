@@ -257,24 +257,24 @@ const body = document.body;
 const container = document.getElementsByClassName('container');
 const song_title = document.getElementById('song_title');
 
-visionControl.addEventListener('click',()=>{
+function setBackgroundColor(color){
+  document.body.style.background = color;
+  textsDiv.style.backgroundColor = color;
+  song_title.style.color = color ==='white' ? 'black':'white';
+  textsDiv.style.color = color ==='white' ? 'black':'white';
+  localStorage.setItem('backgroundColor',color);
+}
 
-  if(textsDiv.style.backgroundColor=='white'){
-    // visionControl.querySelector('i').className='fa-regular fa-eye';
-    visionControl.style.backgroundColor='white';
-    visionControl.style.borderRadius='10px';
-    notesDiv.style.backgroundColor='white';
-    visionControl.style.paddingTop='10px';
-    body.style.background='black';
-    textsDiv.style.backgroundColor='black';
-    song_title.style.color='white';
-    // container.style.backgroundColor='black'
-    textsDiv.style.color='white';
+const savedColor =localStorage.getItem('backgroundColor');
+if (savedColor){
+  setBackgroundColor(savedColor);
+}
+
+visionControl.addEventListener('click',()=>{
+  if(textsDiv.style.backgroundColor==='white'){
+      setBackgroundColor('black');
     }
   else{
-    body.style.background='white';
-    textsDiv.style.backgroundColor='white';
-    song_title.style.color='black';
-    textsDiv.style.color='black';
+    setBackgroundColor('white');  
   }
 });

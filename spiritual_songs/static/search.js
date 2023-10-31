@@ -7,11 +7,12 @@ analyzeButton.addEventListener('click', function() {
     analyseInput();
 });
 
-inputField.addEventListener('keydown', function(event){
-    if (event.keyCode === 13){
-        analyzeButton.click();
-    }
-}); 
+// Gadget Enter Button------------------------------------------------------
+// inputField.addEventListener('keydown', function(event){
+//     if (event.keyCode === 13){
+//         analyzeButton.click();
+//     }
+// }); 
 
 
 
@@ -81,3 +82,29 @@ function appendToInput(number) {
     var inputField = document.getElementById('input-field');
     inputField.value += number;
 }
+
+// ---------------------dealing with the background color saving ---------------------
+function setBackgroundColor(color){
+    document.body.style.background = color;
+
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+    const savedColor = localStorage.getItem('backgroundColor');
+    if(savedColor){
+        setBackgroundColor(savedColor);
+    }
+//     if (backGround == 'black'){
+//    // visionControl.querySelector('i').className='fa-regular fa-eye';
+// //    visionControl.style.backgroundColor='white';
+// //    visionControl.style.borderRadius='10px';
+// //    notesDiv.style.backgroundColor='white';
+// //    visionControl.style.paddingTop='10px';
+//    body.style.background='black';
+// //    textsDiv.style.backgroundColor='black';
+// //    song_title.style.color='white';
+//    // container.style.backgroundColor='black'
+// //    textsDiv.style.color='white';
+//     }
+//     else{ }
+});

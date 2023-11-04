@@ -86,6 +86,7 @@ function appendToInput(number) {
 // ---------------------dealing with the background color saving ---------------------
 function setBackgroundColor(color){
     document.body.style.background = color;
+    h1.style.color='white';
 
 }
 

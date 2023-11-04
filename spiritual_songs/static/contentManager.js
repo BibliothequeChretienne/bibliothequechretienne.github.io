@@ -212,9 +212,7 @@ next.addEventListener('click', ()=>{
                 })
   }
 });
-
-
-
+//-------------to
 function toggleControlPanel(){
   const controlPanel = document.querySelector('.control_panel');
   const controlPanelWidth = controlPanel.offsetWidth;
@@ -266,6 +264,7 @@ function setBackgroundColor(color){
   textsDiv.style.backgroundColor = color;
   song_title.style.color = color ==='white' ? 'black':'white';
   textsDiv.style.color = color ==='white' ? 'black':'white';
+  visionControl.style.backgroundColor='white';
   localStorage.setItem('backgroundColor',color);
 }
 

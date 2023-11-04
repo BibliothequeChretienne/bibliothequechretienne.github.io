@@ -274,7 +274,8 @@ if (savedColor){
   setBackgroundColor(savedColor);
 }
 
-visionControl.addEventListener('click',()=>{
+visionControl.addEventListener('click',(event)=>{
+  event.stopPropagation();// Stop the click event from propagating to the controlPanel element
   if(textsDiv.style.backgroundColor==='white'){
       setBackgroundColor('black');
     }

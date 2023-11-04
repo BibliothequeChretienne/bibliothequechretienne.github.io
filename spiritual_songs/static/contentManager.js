@@ -225,17 +225,21 @@ function toggleControlPanel(){
   if(window.innerWidth <=900){
     if(controlPanel.style.display==='block'){
       controlPanel.style.display='none';
-    }else{
+    }
+    else{
       controlPanel.style.display = 'block';
       controlPanel.style.justifyContent = 'center'; // Center horizontally
       controlPanel.style.position = 'fixed';
       controlPanel.style.bottom = '0%';
       controlPanel.style.zIndex = '999';
-
-     
     }
   }
 }
+
+document.querySelector('.control_panel').addEventListener('click', (event) => {
+  // Stop the click event from propagating to the controlPanel element
+  event.stopPropagation();
+});
 document.addEventListener('click', () =>{
   toggleControlPanel();
 });

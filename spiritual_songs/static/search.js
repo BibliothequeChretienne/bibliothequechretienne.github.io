@@ -1,20 +1,23 @@
 const analyzeButton = document.getElementById('analyze-button');
 const searchInput = document.querySelector('.search-input');
-const inputField = document.getElementById("inputField")
-
+const inputField = document.getElementById("input-field")
+const clearButton = document.getElementById('clearButton');
 
 analyzeButton.addEventListener('click', function() {
     analyseInput();
 });
 
-// Gadget Enter Button------------------------------------------------------
-// inputField.addEventListener('keydown', function(event){
-//     if (event.keyCode === 13){
-//         analyzeButton.click();
-//     }
-// }); 
+// Gadget Enter Button clicked ------------------------------------------------------
+inputField.addEventListener('keydown', function(event){
+    if (event.keyCode === 13){
+        analyzeButton.click();
+    }
+}); 
 
-
+// cursor set focused on the input field
+window.addEventListener('load',function(){
+    setInterval(function(){inputField.focus();},100);
+});
 
 // ------------------FONCTION D"ANALYSE DES ENTREES-----------------------//
 // titles={};
@@ -72,7 +75,26 @@ function analyseInput(){
                 });
         } else {
             // --------------------------------TEXT RESEARCH ACTIONS--------------------------//
-            alert('Text action:' + searchText);
+            // alert('Text action:' + searchText);
+            // const pattern = /^(\d+)([a-zA-Z])$/;
+            const pattern = /^(\d+)([аАaA])$/;
+            const match = searchText.match(pattern);
+            if (match){
+                const number = parseInt(match[1],10);
+                const letter = match[2].toLowerCase();
+
+                if (letter==='а' || letter==='a'){
+                    // alert(number + letter);
+                    // вызов песней 1а - 9а
+                }else{
+                    alert("Неправилный номер песни. Буква должна быть 'а' или 'А'");
+                }
+            }
+            else{
+                //pure text research
+                alert("Поиск песни отрывком текста пока не готов!")
+            }
+            
         }
     }
 }
@@ -83,10 +105,20 @@ function appendToInput(number) {
     inputField.value += number;
 }
 
+// clearing the input from the input field
+clearButton.addEventListener("click",function(){
+    
+    const currentValue = searchInput.value;
+    newValue = currentValue.slice(0,-1);
+    searchInput.value=newValue;
+});
+
+
 // ---------------------dealing with the background color saving ---------------------
+const titre = document.getElementById("titre")
 function setBackgroundColor(color){
     document.body.style.background = color;
-    h1.style.color='white';
+    titre.style.color= color ==='white' ? 'black':'white';
 
 }
 
@@ -109,3 +141,6 @@ document.addEventListener('DOMContentLoaded', function(){
 //     }
 //     else{ }
 });
+
+
+

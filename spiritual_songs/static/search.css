@@ -21,7 +21,7 @@ h1{
 
 
  :root{
-    --search-container-width:40%;
+    --search-container-width:60%;
     --number-keyboard-width:50%;
  }
 .search-container {
@@ -33,8 +33,12 @@ h1{
     left:calc(50% - var(--search-container-width) /2 );
     margin-bottom: 20px;
   }
-.search-container placeholder{
-  font-size: 10px;
+#input-field::placeholder{
+  font-size: 15px;
+}
+#input-field{
+  font-weight: bold;
+  font-size: 35px; /* Размер в поле текста*/
 }
 .search-input {
     padding-right: 30px; /* Add space for the icon */

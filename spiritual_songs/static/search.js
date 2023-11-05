@@ -115,9 +115,10 @@ clearButton.addEventListener("click",function(){
 
 
 // ---------------------dealing with the background color saving ---------------------
+const titre = document.getElementById("titre")
 function setBackgroundColor(color){
     document.body.style.background = color;
-    h1.style.color='white';
+    titre.style.color= color ==='white' ? 'black':'white';
 
 }
 

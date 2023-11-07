@@ -302,5 +302,8 @@ document.addEventListener('touchmove', (e) =>{
     if(deltaX>0){
       next.click();
     }
+    else{
+      previous.click();
+    }
   }
 });

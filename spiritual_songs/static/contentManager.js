@@ -264,7 +264,7 @@ function setBackgroundColor(color){
   textsDiv.style.backgroundColor = color;
   song_title.style.color = color ==='white' ? 'black':'white';
   textsDiv.style.color = color ==='white' ? 'black':'white';
-  notesDiv.style.color = color ==='white' ? 'black':'white';
+  notesDiv.style.backgroundColor = color ==='white' ? 'black':'white';
   visionControl.style.backgroundColor='white';
   localStorage.setItem('backgroundColor',color);
 }

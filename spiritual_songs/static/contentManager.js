@@ -282,3 +282,25 @@ visionControl.addEventListener('click',(event)=>{
     setBackgroundColor('white');  
   }
 });
+
+// swipe effect on NEXT button ////////
+let startX, startY;
+
+document.addEventListener('touchstart', (e) =>{
+  startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchmove', (e) =>{
+  const endX = e.touches[0].clientX;
+  const endY = e.touches[0].clientY;
+
+  const deltaX = startX - endX;
+  const deltaY = startY - endY;
+
+  if(Math.abs(deltaX)>Math.abs(deltaY) && Math.abs(deltaX) > 50){
+    if(deltaX>0){
+      next.click();
+    }
+  }
+});

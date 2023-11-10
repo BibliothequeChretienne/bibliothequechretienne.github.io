@@ -127,19 +127,6 @@ document.addEventListener('DOMContentLoaded', function(){
     if(savedColor){
         setBackgroundColor(savedColor);
     }
-//     if (backGround == 'black'){
-//    // visionControl.querySelector('i').className='fa-regular fa-eye';
-// //    visionControl.style.backgroundColor='white';
-// //    visionControl.style.borderRadius='10px';
-// //    notesDiv.style.backgroundColor='white';
-// //    visionControl.style.paddingTop='10px';
-//    body.style.background='black';
-// //    textsDiv.style.backgroundColor='black';
-// //    song_title.style.color='white';
-//    // container.style.backgroundColor='black'
-// //    textsDiv.style.color='white';
-//     }
-//     else{ }
 });
 
 

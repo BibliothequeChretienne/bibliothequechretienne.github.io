@@ -264,6 +264,7 @@ function setBackgroundColor(color){
   textsDiv.style.backgroundColor = color;
   song_title.style.color = color ==='white' ? 'black':'white';
   textsDiv.style.color = color ==='white' ? 'black':'white';
+  notesDiv.style.color = color ==='white' ? 'black':'white';
   visionControl.style.backgroundColor='white';
   localStorage.setItem('backgroundColor',color);
 }
@@ -282,11 +283,6 @@ visionControl.addEventListener('click',(event)=>{
     setBackgroundColor('white');  
   }
 });
- 
-
-
-
-
 let startX, startY;
 
 document.addEventListener('touchstart', (e) =>{
@@ -304,6 +300,10 @@ document.addEventListener('touchmove', (e) =>{
   if(Math.abs(deltaX)>Math.abs(deltaY) && Math.abs(deltaX) > 50){
     if(deltaX>0){
       next.click();
+    }
+
+    else{
+      previous.click();
     }
   }
 });

@@ -284,7 +284,7 @@ visionControl.addEventListener('click',(event)=>{
   }
 });
 
-// swipe effect on NEXT button ////////
+// swipe effect on NEXT button ////---//// switching notesDiv and textsDiv ///
 let startX, startY;
 
 document.addEventListener('touchstart', (e) =>{
@@ -301,10 +301,31 @@ document.addEventListener('touchmove', (e) =>{
 
   if(Math.abs(deltaX)>Math.abs(deltaY) && Math.abs(deltaX) > 50){
     if(deltaX>0){
-      next.click();
+      // next.click();
+      notesDiv.style.display = "block";
+      textsDiv.style.display = "none";
+      toggleFullscreen();
+
     }
     else{
       previous.click();
     }
   }
 });
+const NotesIsFullscreen = false;
+const lastTapTime = 0;
+function toggleFullscreen(){
+  const currentTime = new Date().getTime();
+  const tapDelay = currentTime - lastTapTime;
+
+  if(tapDelay < 300){
+    if(NotesIsFullscreen){
+      notesDiv.classList.remove('fullscreen');
+    }
+    else{
+      notesDiv.classList.add('fullscreen');
+    }
+    NotesIsFullscreen = !NotesIsFullscreen;
+  }
+  lastTapTime = currentTime;
+}

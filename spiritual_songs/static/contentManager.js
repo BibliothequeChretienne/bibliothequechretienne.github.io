@@ -304,7 +304,6 @@ document.addEventListener('touchmove', (e) =>{
       // next.click();
       notesDiv.style.display = "block";
       textsDiv.style.display = "none";
-      toggleFullscreen();
 
     }
     else{
@@ -331,3 +330,5 @@ function toggleFullscreen(){
   }
   lastTapTime = currentTime;
 }
+
+notesDiv.addEventListener('click', toggleFullscreen);

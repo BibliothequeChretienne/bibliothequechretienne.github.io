@@ -152,7 +152,11 @@ margin-left: -25px;
 width: 100%;
 height: 100%;
 }
-
+/* ----------------------------note div to full screen--------------------------------------- */
+#notesDiv.fullscreen {
+    width: 100vw; 
+    height: 100vh;
+}
 
 .song_texts{
     background-color: rgb(255, 255, 255);

@@ -308,7 +308,9 @@ document.addEventListener('touchmove', (e) =>{
 
     }
     else{
-      previous.click();
+      // previous.click();
+      notesDiv.style.display = "block";
+      textsDiv.style.display = "block";
     }
   }
 });

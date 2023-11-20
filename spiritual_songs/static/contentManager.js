@@ -264,7 +264,7 @@ function setBackgroundColor(color){
   textsDiv.style.backgroundColor = color;
   song_title.style.color = color ==='white' ? 'black':'white';
   textsDiv.style.color = color ==='white' ? 'black':'white';
-  notesDiv.style.color = color ==='white' ? 'black':'white';
+  notesDiv.style.backgroundColor = color ==='white' ? 'black':'white';
   visionControl.style.backgroundColor='white';
   localStorage.setItem('backgroundColor',color);
 }
@@ -283,6 +283,9 @@ visionControl.addEventListener('click',(event)=>{
     setBackgroundColor('white');  
   }
 });
+
+// swipe effect on NEXT button ////---//// switching notesDiv and textsDiv ///
+
 let startX, startY;
 
 document.addEventListener('touchstart', (e) =>{
@@ -299,11 +302,35 @@ document.addEventListener('touchmove', (e) =>{
 
   if(Math.abs(deltaX)>Math.abs(deltaY) && Math.abs(deltaX) > 50){
     if(deltaX>0){
-      next.click();
-    }
+      // next.click();
+      notesDiv.style.display = "block";
+      textsDiv.style.display = "none";
 
+    }
     else{
-      previous.click();
+      // previous.click();
+      notesDiv.style.display = "block";
+      textsDiv.style.display = "block";
     }
   }
 });
+const NotesIsFullscreen = false;
+const lastTapTime = 0;
+function toggleFullscreen(){
+  const currentTime = new Date().getTime();
+  const tapDelay = currentTime - lastTapTime;
+
+  if(tapDelay < 300){
+    if(NotesIsFullscreen){
+      notesDiv.classList.remove('fullscreen');
+    }
+
+    else{
+      notesDiv.classList.add('fullscreen');
+    }
+    NotesIsFullscreen = !NotesIsFullscreen;
+  }
+  lastTapTime = currentTime;
+}
+
+notesDiv.addEventListener('click', toggleFullscreen);

@@ -285,6 +285,7 @@ visionControl.addEventListener('click',(event)=>{
 });
 
 // swipe effect on NEXT button ////---//// switching notesDiv and textsDiv ///
+
 let startX, startY;
 
 document.addEventListener('touchstart', (e) =>{
@@ -323,6 +324,7 @@ function toggleFullscreen(){
     if(NotesIsFullscreen){
       notesDiv.classList.remove('fullscreen');
     }
+
     else{
       notesDiv.classList.add('fullscreen');
     }
